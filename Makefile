@@ -8,7 +8,7 @@ rebuild: clean build
 
 fetch:
 	@mkdir -p $(build_dir)
-	cd $(HOME)/repo && git archive --format=tar ${GIT_BRANCH} | tar -C $(build_dir) -xf -
+	cd $(HOME)/repo && git archive --format=tar $(GIT_BRANCH) | tar -C $(build_dir) -xf -
 
 build: fetch
 	@echo "Current build profile is $${BUILD_PROFILE}"
