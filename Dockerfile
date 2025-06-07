@@ -5,7 +5,7 @@ ARG USERNAME=ubuntu
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
- && apt-get install -y git wget unzip
+ && apt-get install -y build-essential curl git unzip wget 
 
 WORKDIR /root
 
@@ -22,8 +22,8 @@ ENV PATH=${PATH}:${GRADLE_HOME}/bin
 USER ${USERNAME}
 WORKDIR /home/${USERNAME}
 
-COPY --chown=${USERNAME}:${USERNAME} ./entrypoint.sh /home/${USERNAME}
+COPY --chown=${USERNAME}:${USERNAME} ./Makefile /home/${USERNAME}
 
 RUN mkdir -p /home/${USERNAME}/.gradle
 
-ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT [ "make" ]
