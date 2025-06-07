@@ -2,12 +2,12 @@
 
 ## How to build
 
-```
+```shell
 docker compose build
 ```
 
 ## How to run
 
-```
-docker compose up
+```shell
+docker compose run --rm builder
 ```

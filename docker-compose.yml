@@ -18,3 +18,10 @@ services:
       - type: bind
         source: ./distribution
         target: /home/ubuntu/distribution
+      # Gradle user home directory to cache Gradle related files
+      - type: volume
+        source: gradle_volume
+        target: /home/ubuntu/.gradle
+volumes:
+  gradle_volume:
+    name: 'gradle-volume'
