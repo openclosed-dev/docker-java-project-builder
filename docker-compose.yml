@@ -1,0 +1,20 @@
+services:
+  builder:
+    build:
+      args:
+        - GRADLE_VERSION=8.14.2
+    image: java-project-builder:latest
+    environment:
+      - GIT_BRANCH=${GIT_BRANCH:-main}
+      - BUILD_PROFILE=${BUILD_PROFILE:-production}
+    command: ["/home/ubuntu/entrypoint.sh"]
+    volumes:
+      # Git repository to build
+      - type: bind
+        source: ../gradle-multiproject-example
+        target: /home/ubuntu/repo
+        read_only: true
+      # Directory where distribution files will be outputted
+      - type: bind
+        source: ./distribution
+        target: /home/ubuntu/distribution
