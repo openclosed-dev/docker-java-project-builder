@@ -7,7 +7,7 @@ services:
     environment:
       - GIT_BRANCH=${GIT_BRANCH:-main}
       - BUILD_PROFILE=${BUILD_PROFILE:-production}
-    command: ["rebuild"]
+    command: ["clean", "all"]
     volumes:
       # Git repository to build
       - type: bind
